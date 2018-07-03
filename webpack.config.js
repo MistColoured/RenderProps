@@ -34,13 +34,13 @@ module.exports = {
         // -loader suffix is no longer optional in webpack2 for clarity reasons
         // see webpack 1 upgrade guide
         loader: 'babel-loader',
-        // options: {
-        //   presets: [
-        //     'env',
-        //     'react',
-        //     'stage-3',
-        //   ],
-        // },
+        options: {
+          presets: [
+            '@babel/stage-3',
+            '@babel/env',
+            '@babel/react',
+          ],
+        },
         // options for the loader
       },
       {
