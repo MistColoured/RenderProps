@@ -3,7 +3,7 @@ const PATH = require('path');
 const PORT = process.env.PORT || 8080;
 
 module.exports = {
-  entry: './app/main.js',
+  entry: './index.jsx',
   output: {
     filename: 'bundle.js',
   },
@@ -34,30 +34,30 @@ module.exports = {
         // -loader suffix is no longer optional in webpack2 for clarity reasons
         // see webpack 1 upgrade guide
         loader: 'babel-loader',
-        options: {
-          presets: [
-            'env',
-            'react',
-            'stage-3',
-          ],
-        },
+        // options: {
+        //   presets: [
+        //     'env',
+        //     'react',
+        //     'stage-3',
+        //   ],
+        // },
         // options for the loader
       },
       {
-        // Disabled until I need to add CSS styling to my work again
-        // test: /\.scss$/,
-        // use: [
-        //   'style-loader',
-        //   'css-loader',
-        //   'sass-loader'
-        // ]
+      // Disabled until I need to add CSS styling to my work again
+      // test: /\.scss$/,
+      // use: [
+      //   'style-loader',
+      //   'css-loader',
+      //   'sass-loader'
+      // ]
       },
     ],
   },
   devServer: {
     // Tell the server where to serve content from.
     // This is only necessary if you want to serve static files.
-    contentBase: PATH.join(__dirname, 'public'),
+    contentBase: PATH.join(__dirname, '/'),
     // Enable gzip compression for everything served
     compress: true,
     // Enable webpack's Hot Module Replacement feature
