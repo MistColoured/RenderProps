@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
 
-export default class Toggle extends Component {
+const App = () => (
+  <Toggle
+    draw={({ visible, toggle }) => (
+      <div>
+        <button onClick={toggle}>Click Me (in App)</button>
+        {visible && <p>Can you see me?</p>}
+      </div>
+    )}
+  />
+);
+
+class Toggle extends Component {
   state = {
-    on: false,
+    visible: false,
   }
 
   handleToggle = () => {
     this.setState(prevState => ({
-      on: !prevState.on,
+      visible: !prevState.visible,
     }));
   }
 
   render() {
+    const { visible } = this.state;
     // eslint-disable-next-line
-    const { render } = this.props;
-    const { on } = this.state;
+    const { draw } = this.props;
     return (
       <div>
-        {render({
-          on,
+        <button onClick={this.handleToggle}>Click Me! (In Toggle)</button>
+        {draw({
+          visible,
           toggle: this.handleToggle,
         })}
       </div>
     );
   }
 }
+
+export default App;
